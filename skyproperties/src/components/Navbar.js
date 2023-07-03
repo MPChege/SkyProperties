@@ -19,7 +19,7 @@ function Navbar() {
 			<nav ref={navRef}>
 				<a href="/#">Home</a>
 				<a href="/#">My work</a>
-				<a href="/#">Blog</a>
+				<a href="/#"></a>
 				<a className="tag" href="SignIn">
           SignIn
         </a>
