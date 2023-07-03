@@ -1,6 +1,7 @@
 import React from "react";
 import * as Components from './Components';
 import Navbar from "./components/Navbar";
+import { Routes,Route } from "react-router-dom";
 
 function App() {
   const [signIn, toggle] = React.useState(true);
@@ -18,6 +19,9 @@ function App() {
   }
 
   return (
+    <>
+    <Navbar/>
+
     <Components.Container>
       <Components.SignUpContainer signinIn={signIn}>
         <Components.Form>
@@ -71,6 +75,7 @@ function App() {
         <Components.Paragraph>{welcomeMessage}</Components.Paragraph>
       )}
     </Components.Container>
+    </>
   );
 }
 
