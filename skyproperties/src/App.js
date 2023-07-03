@@ -1,8 +1,21 @@
 import React from "react";
 import * as Components from './Components';
+import Navbar from "./components/Navbar";
 
 function App() {
   const [signIn, toggle] = React.useState(true);
+  const [userType, setUserType] = React.useState('');
+
+  const handleSignUp = () => {
+    console.log("Sign up button clicked");
+    toggle(true); // Set signIn to true to slide to the sign-in side
+  };
+
+  let welcomeMessage = '';
+
+  if (userType === 'buyer') {
+    welcomeMessage = "Welcome! Come and get some houses!";
+  }
 
   return (
     <Components.Container>
@@ -12,7 +25,12 @@ function App() {
           <Components.Input type='text' placeholder='Name' />
           <Components.Input type='email' placeholder='Email' />
           <Components.Input type='password' placeholder='Password' />
-          <Components.Button>Sign Up</Components.Button>
+          <Components.UserTypeSelect onChange={(event) => setUserType(event.target.value)}>
+            <option value=''>Select user type</option>
+            <option value='buyer'>Buyer</option>
+            <option value='seller'>Seller</option>
+          </Components.UserTypeSelect>
+          <Components.Button onClick={handleSignUp}>Sign Up</Components.Button>
         </Components.Form>
       </Components.SignUpContainer>
 
@@ -49,6 +67,9 @@ function App() {
           </Components.RightOverlayPanel>
         </Components.Overlay>
       </Components.OverlayContainer>
+      {welcomeMessage && (
+        <Components.Paragraph>{welcomeMessage}</Components.Paragraph>
+      )}
     </Components.Container>
   );
 }
